@@ -1,3 +1,6 @@
+#in questo file inseriamo i prodotti che ci saranno nel mio magazzino di videogiochi
+#id del prodotto, il nome e la quantità 
+
 id,name,quantity
 1,Super Mario Bros Wonder,99
 2,The Legend of Zelda: Tears of the Kingdom,50

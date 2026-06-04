@@ -1,2 +1,4 @@
+#è come se fosse la lista dei requisiti del mio progetto 
+
 flask
 python-dotenv

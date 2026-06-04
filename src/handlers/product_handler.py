@@ -1,13 +1,13 @@
 from src.utils import read_csv_products
 import csv
 
-CSV_FILE = "data/products.csv"
+CSV_FILE = "data/products.csv" 
 
-# 1. GET
+# 1. GET-"Dammi le informazioni", Si usa per leggere i dati
 def get_all_products_handler():
     return read_csv_products()
 
-# 2. POST
+# 2. POST-"Crea qualcosa di nuovo". Si usa per inviare dati al server e modificare qualcosa 
 def create_product_handler(data):
     for field in ["id", "name", "quantity"]:
         if field not in data:
@@ -25,7 +25,7 @@ def create_product_handler(data):
     }
     products.append(nuovo_gioco)
     
-    #sorted per ordinare in da 1 in su 
+    #sorted che si usa per ordinare in modo crescente 
     products = sorted(products, key=lambda x: int(x["id"]))
     
     with open(CSV_FILE, mode="w", encoding="utf-8", newline="") as file:
@@ -34,7 +34,7 @@ def create_product_handler(data):
         writer.writerows(products)
     return {"Message": "Gioco aggiunto con successo!", "Product": nuovo_gioco}, 201
 
-# 3. PUT
+# 3. PUT-"Aggiorna questo dato". Si usa per modificare informazioni già esistenti
 def update_product_handler(product_id, data):
     if "quantity" not in data:
         return {"Error": "Parametro quantity mancante"}, 400
@@ -59,7 +59,7 @@ def update_product_handler(product_id, data):
         writer.writerows(products)
     return {"Message": "Quantità aggiornata con successo!"}, 200
 
-# 4. DELETE
+# 4. DELETE-"Cancella questo dato". Rimuove un elemento che decidiamo dal server.
 def delete_product_handler(product_id):
     products = read_csv_products()
     nuovi_prodotti = [p for p in products if p["id"] != product_id]
