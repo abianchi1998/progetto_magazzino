@@ -1,7 +1,7 @@
 # Il loro unico scopo è smistare il traffico di internet. 
 # Decidono quale pezzo di codice Python deve attivarsi quando un utente (o Postman) 
 # fa una richiesta a un determinato indirizzo URL.
- # fanno da intermediario tra il mondo esterno (Postman/Browser) e la logica interna del programma
+# fanno da intermediario tra il mondo esterno (Postman/Browser) e la logica interna del programma
 
 from flask import Blueprint, jsonify, request
 from src.handlers.product_handler import (
@@ -14,10 +14,12 @@ from src.handlers.product_handler import (
 products_bp = Blueprint("products", __name__, url_prefix="/products")
 
 # 1. GET - legge le info
-@products_bp.route('/read', methods=['GET'])
+@products_bp.route('/read', methods=['GET']) #@ = decoratori, sono una funzionalità potente di Python che permette
+# di modificare o estendere il comportamento di una funzione (o di una classe) 
+# senza cambiarne direttamente il codice interno.
 def get_products():
     prodotti = get_all_products_handler()
-    return jsonify(prodotti), 200
+    return jsonify(prodotti), 200 #codice di errore o successo, indica "tutto ok"
 
 # 2. POST - crea qualcosa di nuovo
 @products_bp.route('/create', methods=['POST'])

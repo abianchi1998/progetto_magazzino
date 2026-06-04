@@ -9,6 +9,6 @@ def create_app():
     app.register_blueprint(products_bp)
     @app.route('/')
     def home():
-        return jsonify({"Message": "Benvenuti nel magazzino dei videogiochi Nintendo!"}), 200
+        return jsonify({"Message": "Benvenuti nel magazzino dei videogiochi Nintendo!"}), 200 #indica la tipologia di errore 
 
     return app
